@@ -18,3 +18,12 @@
 body {
   background-color: #F5F7FA;
 }
+
+.container {
+  max-width: 1240px;
+  margin: auto;
+}
+
+.active {
+  color: #2D60FF;
+}

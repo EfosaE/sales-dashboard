@@ -7,8 +7,9 @@ export default {
  theme: {
     extend: {
       colors: {
-        'primary-2': '#343C6A', // Define your custom color
-        'gray': '#B1B1B1'
+        'primary-1': '#F5F7FA', // Define your custom color
+        'gray': '#B1B1B1',
+        'primary-2': '#2D60FF'
       },
       fontFamily: {
         'mont': ['Mont', 'sans-serif'], // Define your custom font family
