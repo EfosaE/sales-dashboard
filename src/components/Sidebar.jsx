@@ -8,7 +8,7 @@ const Sidebar = () => {
   const dispatch = useDispatch()
 
   return (
-    <section className='w-1/5 bg-white h-screen p-7 px-10 flex items-center flex-col mr-1'>
+    <section className='w-1/5 bg-white dark:bg-slate-800 dark:text-white h-screen p-7 px-10 flex items-center flex-col mr-1'>
       <h1 className='mb-5 flex justify-center items-center font-mont text-2xl'>
         <img src={logo} alt='' className='w-7 h-7 mr-1' />
         Griffin.io

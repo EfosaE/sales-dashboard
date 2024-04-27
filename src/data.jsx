@@ -1,6 +1,6 @@
 export const sideLinks = [
   {
-    icon: 'src/assets/home 2.png',
+    icon: 'src/assets/home 2.svg',
     name: 'Dashboard',
     url: '/',
   },

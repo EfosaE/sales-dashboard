@@ -1,12 +1,18 @@
-import settings from '../assets/settings 1.svg'
-import notification from '../assets/notification.png'
-import { useSelector } from 'react-redux';
+import settings from '../assets/settings 1.svg';
+import notification from '../assets/notification.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../features/userSlice';
 
 const Header = () => {
-     const { title } = useSelector((store) => store.header);
+  const { title } = useSelector((store) => store.header);
+  const dispatch = useDispatch();
+
+  function handleTheme() {
+    dispatch(toggleTheme());
+  }
   return (
-    <header className='bg-white h-fit flex p-4 items-center justify-between'>
-          <h1>{title ? title: 'Overview'}</h1>
+    <header className='bg-white dark:bg-slate-800 dark:text-white h-fit flex p-4 items-center justify-between'>
+      <h1>{title ? title : 'Overview'}</h1>
       <div className='flex'>
         <input
           type='text'
@@ -19,6 +25,9 @@ const Header = () => {
         <div className='rounded-full w-12 h-12 bg-primary-1 flex items-center justify-center mx-4'>
           <img src={notification} />
         </div>
+        <div className='rounded-full w-12 h-12 bg-primary-1 flex items-center justify-center mx-4'>
+          <input type='checkbox' onChange={handleTheme} />
+        </div>
         <div
           className='bg-cover bg-center h-12 w-12 rounded-full'
           style={{
@@ -28,6 +37,6 @@ const Header = () => {
       </div>
     </header>
   );
-}
+};
 
-export default Header
+export default Header;
