@@ -18,15 +18,16 @@ const Sidebar = () => {
           const { icon, name, url } = sideLink;
           return (
             <li key={name} className='flex items-center w-fit py-6 '>
-              <img src={icon} alt='' className='flex-initial' />
-
               <NavLink
                 to={url}
-                className='capitalize text-sm cursor-pointer text-gray ml-6'
+                className='capitalize text-sm cursor-pointer text-gray block flex'
                 onClick={() => {
                   dispatch(addTitle(name));
                 }}>
-                {name}
+                <img
+                  src={icon}
+                  className='block'/>
+                <p className=' ml-6 '>{name}</p>
               </NavLink>
             </li>
           );

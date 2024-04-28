@@ -19,23 +19,15 @@ body {
   background-color: #f5f7fa;
 }
 
-.container {
-  max-width: 1240px;
-  margin: auto;
-}
 
 .active {
   color: #2d60ff;
+  fill: #2d60ff;
 }
 
-[data-theme='light'] {
-  background-color: #ffffff;
-  color: #000000;
-}
 
 /* Dark theme styles */
-[data-theme='dark'] {
-  background-color: #000000;
-  color: #ffffff;
-  /* Other dark theme styles */
+[data-theme='dark'] body {
+background-color: rgb(71 85 105);
+color: white;
 }

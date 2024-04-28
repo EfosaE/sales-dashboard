@@ -10,6 +10,7 @@ import Investments from './pages/Investments';
 import CreditCards from './pages/CreditCards';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     children: [
+    {
+        path: '/',
+        element: <Dashboard />,
+      },
       {
         path: 'transactions',
         element: <Transactions />,

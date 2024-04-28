@@ -11,8 +11,18 @@ const getThemeFromLocalStorage = () => {
   return theme;
 };
 
+const checkTheme = () => {
+  const theme = getThemeFromLocalStorage()
+  if (theme === 'light') {
+    return false
+  } else {
+    return true
+  }
+};
+
 const initialState = {
   theme: getThemeFromLocalStorage(),
+  isDarkTheme: checkTheme(),
 };
 
 const userSlice = createSlice({
@@ -21,7 +31,14 @@ const userSlice = createSlice({
   reducers: {
     toggleTheme: (state) => {
       const { light, dark } = themes;
-      state.theme = state.theme === dark ? light : dark;
+          state.theme = state.theme === light ? dark : light;
+          if (state.theme === dark) {
+              state.isDarkTheme = true;
+          } else {
+             state.isDarkTheme = false;
+          }
+      
+      console.log(state.isDarkTheme);
       document.documentElement.setAttribute('data-theme', state.theme);
       localStorage.setItem('theme', state.theme);
     },
