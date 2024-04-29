@@ -4,13 +4,16 @@ import Sidebar from '../components/Sidebar';
 
 const Root = () => {
   return (
-      <div className='flex'>
+    <div className='flex '>
+
         <Sidebar />
-        <div className='flex flex-col w-4/5'>
-          <Header />
-          <Outlet />
-        </div>
+
+
+      <div className='flex flex-col w-4/5'>
+        <Header />
+        <Outlet />
       </div>
+    </div>
   );
 };
 

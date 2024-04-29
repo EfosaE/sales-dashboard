@@ -8,7 +8,7 @@ const Sidebar = () => {
   const dispatch = useDispatch()
 
   return (
-    <section className='w-1/5 bg-white dark:bg-slate-800 dark:text-white h-screen p-7 px-10 flex items-center flex-col mr-1'>
+    <section className='flex items-center flex-col flex-grow  w-1/5 bg-white dark:bg-slate-800 dark:text-white p-7 mr-1 h overflow-hidden'>
       <h1 className='mb-5 flex justify-center items-center font-mont text-2xl'>
         <img src={logo} alt='' className='w-7 h-7 mr-1' />
         Griffin.io
@@ -17,17 +17,15 @@ const Sidebar = () => {
         {sideLinks.map((sideLink) => {
           const { icon, name, url } = sideLink;
           return (
-            <li key={name} className='flex items-center w-fit py-6 '>
+            <li key={name} className='flex items-center w-fit py-4 '>
               <NavLink
                 to={url}
-                className='capitalize text-sm cursor-pointer text-gray block flex'
+                className='cursor-pointer text-gray block flex items-center'
                 onClick={() => {
                   dispatch(addTitle(name));
                 }}>
-                <img
-                  src={icon}
-                  className='block'/>
-                <p className=' ml-6 '>{name}</p>
+                <img src={icon} className='block' />
+                <p className=' ml-6 text-sm'>{name}</p>
               </NavLink>
             </li>
           );

@@ -23,6 +23,7 @@ const checkTheme = () => {
 const initialState = {
   theme: getThemeFromLocalStorage(),
   isDarkTheme: checkTheme(),
+  user: null
 };
 
 const userSlice = createSlice({
@@ -37,8 +38,6 @@ const userSlice = createSlice({
           } else {
              state.isDarkTheme = false;
           }
-      
-      console.log(state.isDarkTheme);
       document.documentElement.setAttribute('data-theme', state.theme);
       localStorage.setItem('theme', state.theme);
     },

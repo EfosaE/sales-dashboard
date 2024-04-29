@@ -22,7 +22,9 @@ body {
 
 .active {
   color: #2d60ff;
-  fill: #2d60ff;
+}
+.active img {
+ filter: grayscale(100%) invert(100%) saturate(100%) hue-rotate(240deg);;
 }
 
 
@@ -30,4 +32,8 @@ body {
 [data-theme='dark'] body {
 background-color: rgb(71 85 105);
 color: white;
+}
+
+h3 {
+font-size: 14px;
 }

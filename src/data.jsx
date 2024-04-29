@@ -2,7 +2,7 @@ export const sideLinks = [
   {
     icon: 'src/assets/home.svg',
     name: 'Dashboard',
-    url: '/',
+    url: '/dashboard',
   },
   {
     icon: 'src/assets/transfer 1.svg',

@@ -11,6 +11,7 @@ import CreditCards from './pages/CreditCards';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import Index from './pages/Index'
 
 
 const router = createBrowserRouter([
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     children: [
-    {
-        path: '/',
+      {
+        index: true,
+        element: <Index/>
+      },
+      {
+        path: '/dashboard',
         element: <Dashboard />,
       },
       {
@@ -48,16 +53,16 @@ const router = createBrowserRouter([
       },
       {
         path: 'settings',
-        element: <Settings/>,
+        element: <Settings />,
       },
     ],
   },
   {
-    path: '/login',
+    path: 'login',
     element: <Login />,
   },
   {
-    path: '/register',
+    path: 'register',
     element: <Register />,
   },
 ]);
