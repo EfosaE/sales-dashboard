@@ -1,5 +1,30 @@
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, redirect } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import supabase from '../utils/supabase';
+import { toast } from 'react-toastify';
+import { loginUser } from '../features/userSlice';
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const action = (store) => async ({ request }) => {
+  const formData = await request.formData();
+  const userData = Object.fromEntries(formData);
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: userData.email,
+    password: userData.password,
+  });
+  if (data) {
+    store.dispatch(loginUser(data));
+    toast.success('login successful');
+    return redirect('/dashboard');
+  } else if (error) {
+    console.log(error);
+    const errorMessage =
+      error.message || 'please double check your credentials';
+    toast.error(errorMessage);
+    return null;
+  }
+};
 
 export default function Login() {
   return (
@@ -13,7 +38,7 @@ export default function Login() {
         </div>
 
         <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
-          <Form className='space-y-6'>
+          <Form className='space-y-6 text-black' method='POST'>
             <div>
               <label
                 htmlFor='email'
@@ -69,7 +94,7 @@ export default function Login() {
           </Form>
 
           <p className='mt-10 text-center text-sm text-gray-500'>
-            Not a member? 
+            Not a member?
             <Link
               to='/register'
               className='font-semibold ml-2 leading-6 text-blue-800 hover:text-indigo-500'>

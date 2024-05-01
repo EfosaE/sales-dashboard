@@ -1,7 +1,22 @@
-import { Link } from 'react-router-dom';
-import Card from '../components/Card';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+// import { getUserData } from '../features/userSlice';
+
 
 const Dashboard = () => {
+    const navigate = useNavigate();
+    const { user } = useSelector((store) => store.user);
+    useEffect(() => {
+      if (!user) {
+        navigate('/login');
+        console.log(user)
+      } else {
+        console.log(user);
+        return;
+      }
+    }, []);
+  
   return (
     <section className='container mx-auto grid grid-cols-3 gap-x-4 gap-y-2 py-4'>
       <div className='flex flex-col gap-y-2'>

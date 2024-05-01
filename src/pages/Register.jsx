@@ -1,7 +1,37 @@
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, redirect } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import supabase from '../utils/supabase';
+import { toast } from 'react-toastify';
+
+
+  // eslint-disable-next-line react-refresh/only-export-components
+  export const action = async ({ request }) => {
+    const formData = await request.formData();
+    const userData = Object.fromEntries(formData);
+  
+    try {
+      const {data, error} = await supabase.auth.signUp({
+        email: userData.email,
+        password: userData.password,
+        options: {
+          data: {
+            user_name: userData.name, 
+          },
+        },
+      });
+      toast.success('account created successfully');
+      return redirect('/login');
+    } catch (error) {
+      const errorMessage =
+        error.message ||
+        'please double check your credentials';
+      toast.error(errorMessage);
+      return null;
+    }
+  };
 
 export default function Register() {
+
   return (
     <>
       <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
@@ -13,7 +43,7 @@ export default function Register() {
         </div>
 
         <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
-          <Form className='space-y-6 text-black'>
+          <Form className='space-y-6 text-black' method='POST'>
             <div>
               <label
                 htmlFor='name'
@@ -24,7 +54,6 @@ export default function Register() {
                 <input
                   id='name'
                   name='name'
-                  type='text'
                   required
                   className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                 />

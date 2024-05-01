@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import supabase from '../utils/supabase';
+import { toast } from 'react-toastify';
 
 const themes = {
   light: 'light',
@@ -11,19 +13,30 @@ const getThemeFromLocalStorage = () => {
   return theme;
 };
 
+async function signOut() {
+  const { error } = await supabase.auth.signOut();
+}
+
+function getUserFromLocalStorage() {
+ return JSON.parse(localStorage.getItem('user')) || null;
+}
+
+
+
 const checkTheme = () => {
-  const theme = getThemeFromLocalStorage()
+  const theme = getThemeFromLocalStorage();
   if (theme === 'light') {
-    return false
+    return false;
   } else {
-    return true
+    return true;
   }
 };
 
 const initialState = {
   theme: getThemeFromLocalStorage(),
   isDarkTheme: checkTheme(),
-  user: null
+  user: getUserFromLocalStorage(),
+  isLoading: false,
 };
 
 const userSlice = createSlice({
@@ -32,17 +45,30 @@ const userSlice = createSlice({
   reducers: {
     toggleTheme: (state) => {
       const { light, dark } = themes;
-          state.theme = state.theme === light ? dark : light;
-          if (state.theme === dark) {
-              state.isDarkTheme = true;
-          } else {
-             state.isDarkTheme = false;
-          }
+      state.theme = state.theme === light ? dark : light;
+      if (state.theme === dark) {
+        state.isDarkTheme = true;
+      } else {
+        state.isDarkTheme = false;
+      }
       document.documentElement.setAttribute('data-theme', state.theme);
       localStorage.setItem('theme', state.theme);
     },
+    loginUser: (state, action) => {
+      const user = action.payload
+      state.user = user
+      localStorage.setItem('user', JSON.stringify(user));
+    },
+
+    logOutUser: (state) => {
+      signOut();
+      localStorage.removeItem('user');
+      state.user=null
+      toast.success('Logged out successfully');
+    },
+
   },
 });
-export const { toggleTheme } = userSlice.actions;
+export const { toggleTheme, loginUser, logOutUser } = userSlice.actions;
 
 export default userSlice.reducer;
