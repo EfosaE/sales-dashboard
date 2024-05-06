@@ -1,6 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+import paypal from '../assets/paypal.svg';
+import finance from '../assets/finance_money.svg';
+import transaction from '../assets/transaction.svg';
 import BarChart from '../components/charts/BarChart';
 import { employeesData } from '../data';
 import Cards from '../components/Cards';
@@ -16,6 +18,35 @@ const Dashboard = () => {
   return (
     <section className='container mx-auto lg:grid lg:grid-cols-3 lg:gap-x-2 lg:gap-y-1 lg:py-2 xl:gap-x-4 xl:gap-y-2 xl:py-4'>
       <Cards />
+      <div className='flex flex-col lg:gap-y-2 xl:-mt-0.5'>
+        <h3>Recent Transactions</h3>
+        <div className='bg-white  gap-y-6 rounded-3xl px-7 py-6 flex flex-col'>
+          <div className='flex justify-between text-black items-center'>
+            <img src={transaction} alt='' className='block' />
+            <p className='inter-regular'>
+              Deposit from my card <br />
+              <span className='inter-thin text-xs'>21 Jan, 2024</span>
+            </p>
+            <p className='text-red-500'>800</p>
+          </div>
+          <div className='flex justify-between text-black items-center'>
+            <img src={transaction} alt='' className='block' />
+            <p className='inter-regular'>
+              Deposit from my card <br />
+              <span className='inter-thin text-xs'>21 Jan, 2024</span>
+            </p>
+            <p className='text-green-500'>800</p>
+          </div>
+          <div className='flex justify-between text-black items-center'>
+            <img src={transaction} alt='' className='block' />
+            <p className='inter-regular'>
+              Deposit from my card <br />
+              <span className='inter-thin text-xs'>21 Jan, 2024</span>
+            </p>
+            <p className='text-green-500'>800</p>
+          </div>
+        </div>
+      </div>
       <div className='flex flex-col gap-y-2 col-span-2'>
         <h3>Weekly Activity</h3>
         <div className='bg-white h-[332px] rounded-3xl '>

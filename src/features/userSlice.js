@@ -36,7 +36,7 @@ const initialState = {
   theme: getThemeFromLocalStorage(),
   isDarkTheme: checkTheme(),
   user: getUserFromLocalStorage(),
-  isLoading: false,
+  isSideBarOpen: false
 };
 
 const userSlice = createSlice({
@@ -66,9 +66,12 @@ const userSlice = createSlice({
       state.user=null
       toast.success('Logged out successfully');
     },
+    toggleSideBar: (state) => {
+      state.isSideBarOpen = !state.isSideBarOpen
+    }
 
   },
 });
-export const { toggleTheme, loginUser, logOutUser } = userSlice.actions;
+export const { toggleTheme, loginUser, logOutUser, toggleSideBar} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Root = () => {
 
   return (
-    <div className='lg:flex'>
+    <div className='lg:flex '>
       <Sidebar />
 
       <div className='block lg:flex lg:flex-col lg:w-4/5'>
