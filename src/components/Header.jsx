@@ -7,12 +7,13 @@ import { BsMoonStars } from 'react-icons/bs';
 // import { toggleDropDown } from '../features/headerSlice';
 // import Card from './Card';
 import { toast } from 'react-toastify';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 
 const Header = () => {
-const navigate =  useNavigate()
+  const navigate = useNavigate()
+
   const { title } = useSelector((store) => store.header);
   const { isDarkTheme, user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -29,10 +30,10 @@ const navigate =  useNavigate()
 
 
   return (
-    <header className='bg-white dark:bg-slate-800 dark:text-white h-fit py-4'>
-      <div className='container mx-auto flex items-center justify-between'>
+    <header className='bg-white dark:bg-slate-800 dark:text-white h-fit px-4 py-6 text-center'>
+      <div className='container mx-auto lg:flex items-center justify-between capitalize'>
         <h1>{title ? title : 'Overview'}</h1>
-        <div className='flex items-center space-x-4'>
+        <div className='hidden lg:flex items-center space-x-4'>
           <input
             type='text'
             className='rounded-3xl bg-primary-1 px-4 py-1 placeholder:text-xs'

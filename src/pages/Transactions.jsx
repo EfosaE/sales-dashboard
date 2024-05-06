@@ -1,8 +1,9 @@
+import BarChart from "../components/charts/BarChart"
 
 
 const Transactions = () => {
   return (
-    <div>Transactions</div>
+    <div className="bg-white "><BarChart/></div>
   )
 }
 

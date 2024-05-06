@@ -2,36 +2,34 @@ import { Form, Link, redirect } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import supabase from '../utils/supabase';
 import { toast } from 'react-toastify';
+import SubmitBtn from '../components/SubmitBtn';
 
+// eslint-disable-next-line react-refresh/only-export-components
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const userData = Object.fromEntries(formData);
+  const { data, error } = await supabase.auth.signUp({
+    email: userData.email,
+    password: userData.password,
+    options: {
+      data: {
+        user_name: userData.name,
+      },
+    },
+  });
 
-  // eslint-disable-next-line react-refresh/only-export-components
-  export const action = async ({ request }) => {
-    const formData = await request.formData();
-    const userData = Object.fromEntries(formData);
-  
-    try {
-      const {data, error} = await supabase.auth.signUp({
-        email: userData.email,
-        password: userData.password,
-        options: {
-          data: {
-            user_name: userData.name, 
-          },
-        },
-      });
-      toast.success('account created successfully');
-      return redirect('/login');
-    } catch (error) {
-      const errorMessage =
-        error.message ||
-        'please double check your credentials';
-      toast.error(errorMessage);
-      return null;
-    }
-  };
+  if (error) {
+    const errorMessage =
+      error.message || 'please double check your credentials';
+    toast.error(errorMessage);
+    return null;
+  }
+
+  toast.success('account created successfully');
+  return redirect('/login');
+};
 
 export default function Register() {
-
   return (
     <>
       <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
@@ -98,11 +96,7 @@ export default function Register() {
             </div>
 
             <div>
-              <button
-                type='submit'
-                className='flex w-full justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                Register
-              </button>
+              <SubmitBtn text='Register' />
             </div>
           </Form>
 

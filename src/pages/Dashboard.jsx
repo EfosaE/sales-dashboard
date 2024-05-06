@@ -1,55 +1,78 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-// import { getUserData } from '../features/userSlice';
 
+import BarChart from '../components/charts/BarChart';
+import { employeesData } from '../data';
+import Cards from '../components/Cards';
+import PieChart from '../components/charts/PieChart';
+import arrowRight from '../assets/arrow_right.svg';
+import plane from '../assets/plane.png';
+import LineChart from '../components/charts/LineChart';
 
 const Dashboard = () => {
-    const navigate = useNavigate();
-    const { user } = useSelector((store) => store.user);
-    useEffect(() => {
-      if (!user) {
-        navigate('/login');
-        console.log(user)
-      } else {
-        console.log(user);
-        return;
-      }
-    }, []);
-  
+  const navigate = useNavigate();
+  const { user } = useSelector((store) => store.user);
+
   return (
-    <section className='container mx-auto grid grid-cols-3 gap-x-4 gap-y-2 py-4'>
-      <div className='flex flex-col gap-y-2'>
-        <h3>My Cards</h3>
-        <div className='bg-gradient-to-r from-[#0A06F4] to-[#4C49ED] h-[235px] rounded-3xl'></div>
-      </div>
-      <div className='flex flex-col gap-y-2 justify-center'>
-        <div className='flex justify-end'>
-          <Link to='/register' className='text-xs'>
-            See All
-          </Link>
-        </div>
-        <div className='bg-white h-[235px] rounded-3xl'></div>
-      </div>
-      <div className='flex flex-col gap-y-2 -mt-0.5'>
-        <h3>Recent Transactions</h3>
-        <div className='bg-white h-[235px] rounded-3xl'></div>
-      </div>
+    <section className='container mx-auto lg:grid lg:grid-cols-3 lg:gap-x-2 lg:gap-y-1 lg:py-2 xl:gap-x-4 xl:gap-y-2 xl:py-4'>
+      <Cards />
       <div className='flex flex-col gap-y-2 col-span-2'>
         <h3>Weekly Activity</h3>
-        <div className='bg-white h-[235px] rounded-3xl'></div>
+        <div className='bg-white h-[332px] rounded-3xl '>
+          <div className='w-full h-full'>
+            <BarChart />
+          </div>
+        </div>
       </div>
       <div className='flex flex-col gap-y-2'>
         <h3>Expense Statistics</h3>
-        <div className='bg-white h-[235px] rounded-3xl'></div>
+        <div className='bg-white h-[332px] rounded-3xl'>
+          <div className='w-full h-full'>
+            <PieChart />
+          </div>
+        </div>
       </div>
       <div className='flex flex-col gap-y-2'>
         <h3>Quick Transfer</h3>
-        <div className='bg-white h-[235px] rounded-3xl'>y</div>
+        <div className='bg-white rounded-3xl px-7 py-6 inter-regular text-xs flex flex-col gap-y-4 justify-between'>
+          <div className='flex justify-between '>
+            {employeesData.map(({ name, title, image }) => {
+              return (
+                <div
+                  className='flex flex-col items-center justify-center '
+                  key={name}>
+                  <div
+                    className='bg-cover bg-center h-12 w-12 rounded-full mb-4'
+                    style={{
+                      backgroundImage: `url(${image})`,
+                    }}></div>
+                  <p className='text-[#232323]'>{name}</p>
+                  <p className='text-[#718EBF]'>{title}</p>
+                </div>
+              );
+            })}
+            <img src={arrowRight} alt='' className='xl:block hidden' />
+          </div>
+
+          <input
+            type='text'
+            className='placeholder:text-[#718EBF] rounded-full placeholder:text-xs w-full block py-1'
+            placeholder='amount to send'
+          />
+          <button className='bg-[#1814F3] py-3 px-4 rounded-full -rounded-l-[9999px] w-full block'>
+            <p>
+              Send <img src={plane} alt='' className='inline' />
+            </p>
+          </button>
+        </div>
       </div>
       <div className='flex flex-col gap-y-2 col-span-2'>
         <h3>Balance History</h3>
-        <div className='bg-white h-[235px] rounded-3xl'>y</div>
+        <div className='bg-white h-[250px] rounded-3xl '>
+          <div className='w-full h-full'>
+            <LineChart />
+          </div>
+        </div>
       </div>
     </section>
   );

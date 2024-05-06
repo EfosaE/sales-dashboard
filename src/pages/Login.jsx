@@ -3,28 +3,30 @@ import logo from '../assets/logo.png';
 import supabase from '../utils/supabase';
 import { toast } from 'react-toastify';
 import { loginUser } from '../features/userSlice';
+import SubmitBtn from '../components/SubmitBtn';
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const action = (store) => async ({ request }) => {
-  const formData = await request.formData();
-  const userData = Object.fromEntries(formData);
+export const action =
+  (store) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const userData = Object.fromEntries(formData);
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: userData.email,
-    password: userData.password,
-  });
-  if (data) {
-    store.dispatch(loginUser(data));
-    toast.success('login successful');
-    return redirect('/dashboard');
-  } else if (error) {
-    console.log(error);
-    const errorMessage =
-      error.message || 'please double check your credentials';
-    toast.error(errorMessage);
-    return null;
-  }
-};
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: userData.email,
+      password: userData.password,
+    });
+      if (error) {
+        console.error('Authentication error:', error);
+        const errorMessage =
+          error.message || 'Please double-check your credentials.';
+        toast.error(errorMessage);
+        return null; 
+      }
+      store.dispatch(loginUser(data));
+      toast.success('login successful');
+      return redirect('/dashboard');
+  };
 
 export default function Login() {
   return (
@@ -85,11 +87,7 @@ export default function Login() {
             </div>
 
             <div>
-              <button
-                type='submit'
-                className='flex w-full justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                Sign in
-              </button>
+              <SubmitBtn text='Sign In' />
             </div>
           </Form>
 
