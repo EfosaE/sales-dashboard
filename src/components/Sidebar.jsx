@@ -32,8 +32,8 @@ const Sidebar = () => {
   
   
 
-  const dynamicStyles = isSideBarOpen ? 'absolute' : 'hidden';
-  const sectionStyles = `flex lg:static items-center flex-col h-screen lg:translate-x-0 flex-grow lg:w-1/5 w-3/5 bg-white dark:bg-slate-800 dark:text-white p-7 lg:mr-1 ${dynamicStyles}`;
+  const dynamicStyles = isSideBarOpen ? 'translate-x-0' : '-translate-x-full';
+  const sectionStyles = `flex absolute lg:static items-center flex-col h-screen lg:translate-x-0 flex-grow lg:w-1/5 w-3/5 bg-white dark:bg-slate-800 dark:text-white p-7 lg:mr-1 ${dynamicStyles}`;
   return (
     <section className={sectionStyles}>
       <div className='flex'>
@@ -41,7 +41,7 @@ const Sidebar = () => {
           <img src={logo} alt='' className='w-7 h-7 mr-1' />
           Griffin.io
         </h1>
-        <div onClick={handleSidebar}>X</div>
+        <div onClick={handleSidebar} className='lg:hidden'>X</div>
       </div>
 
       <ul className=''>
