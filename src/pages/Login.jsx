@@ -1,5 +1,5 @@
 import { Form, Link, redirect } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '/assets/logo.png';
 import supabase from '../utils/supabase';
 import { toast } from 'react-toastify';
 import { loginUser } from '../features/userSlice';

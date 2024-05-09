@@ -1,14 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import paypal from '../assets/paypal.svg';
-import finance from '../assets/finance_money.svg';
-import transaction from '../assets/transaction.svg';
+import paypal from '/assets/paypal.svg';
+import finance from '/assets/finance_money.svg';
+import transaction from '/assets/transaction.svg';
 import BarChart from '../components/charts/BarChart';
 import { employeesData } from '../data';
 import Cards from '../components/Cards';
 import PieChart from '../components/charts/PieChart';
-import arrowRight from '../assets/arrow_right.svg';
-import plane from '../assets/plane.png';
+import arrowRight from '/assets/arrow_right.svg';
+import plane from '/assets/plane.png';
 import LineChart from '../components/charts/LineChart';
 
 const Dashboard = () => {

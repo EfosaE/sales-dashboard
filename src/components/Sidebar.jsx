@@ -1,5 +1,5 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '/assets/logo.png';
 import { sideLinks } from '../data';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTitle } from '../features/headerSlice';

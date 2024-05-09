@@ -1,34 +1,34 @@
 export const sideLinks = [
   {
-    icon: 'src/assets/home.svg',
+    icon: '/assets/home.svg',
     name: 'dashboard',
   },
   {
-    icon: 'src/assets/transfer 1.svg',
+    icon: '/assets/transfer 1.svg',
     name: 'transactions',
   },
   {
-    icon: 'src/assets/user 3 1.svg',
+    icon: '/assets/user 3 1.svg',
     name: 'accounts',
   },
   {
-    icon: 'src/assets/economic-investment 1.svg',
+    icon: '/assets/economic-investment 1.svg',
     name: 'investments',
   },
   {
-    icon: 'src/assets/credit-card 1.svg',
+    icon: '/assets/credit-card 1.svg',
     name: 'credit cards',
   },
   {
-    icon: 'src/assets/loan 1.svg',
+    icon: '/assets/loan 1.svg',
     name: 'loans',
   },
   {
-    icon: 'src/assets/service 1.svg',
+    icon: '/assets/service 1.svg',
     name: 'services',
   },
   {
-    icon: 'src/assets/settings solid 1.svg',
+    icon: '/assets/settings solid 1.svg',
     name: 'settings',
   },
 ];

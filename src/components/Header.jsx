@@ -1,5 +1,5 @@
-import settings from '../assets/settings 1.svg';
-import notification from '../assets/notification.png';
+import settings from '/assets/settings 1.svg';
+import notification from '/assets/notification.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser, toggleSideBar, toggleTheme } from '../features/userSlice';
 import { MdOutlineWbSunny } from 'react-icons/md';

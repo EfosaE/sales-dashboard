@@ -1,7 +1,7 @@
-import masterColour from '../assets/mastercolour.png';
-import masterWhite from '../assets/masterwhite.png';
-import blackChip from '../assets/black_chip_card.png';
-import whiteChip from '../assets/Chip_Card.png';
+import masterColour from '/assets/mastercolour.png';
+import masterWhite from '/assets/masterwhite.png';
+import blackChip from '/assets/black_chip_card.png';
+import whiteChip from '/assets/Chip_Card.png';
 
 import { Link } from 'react-router-dom';
 
@@ -40,8 +40,8 @@ const Cards = () => {
               background:
                 'linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%)',
             }}>
-            <p className='text-sm'>3778 **** **** 1234</p>
-            <img src={masterColour} alt='' className='block w-8' />
+            <p className='text-sm lg:text-base'>3778 **** **** 1234</p>
+            <img src={masterColour} alt='' className='block w-8 lg:w-10' />
           </div>
         </div>
         <div className='rounded-3xl bg-white flex lg:gap-y-4  xl:gap-y-8 flex-col justify-between text-black lg:w-full'>
@@ -70,8 +70,8 @@ const Cards = () => {
               background:
                 'linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%)',
             }}>
-            <p className='text-sm'>3778 **** **** 1234</p>
-            <img src={masterWhite} alt='' className='block w-8' />
+            <p className='text-sm lg:text-base'>3778 **** **** 1234</p>
+            <img src={masterWhite} alt='' className='block w-8 lg:w-10' />
           </div>
         </div>
       </div>
