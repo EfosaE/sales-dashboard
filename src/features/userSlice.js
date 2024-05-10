@@ -66,12 +66,15 @@ const userSlice = createSlice({
       state.user=null
       toast.success('Logged out successfully');
     },
-    toggleSideBar: (state) => {
-      state.isSideBarOpen = !state.isSideBarOpen
+    openSideBar: (state) => {
+       state.isSideBarOpen = true
+    },
+    closeSideBar: (state) => {
+      state.isSideBarOpen = false
     }
 
   },
 });
-export const { toggleTheme, loginUser, logOutUser, toggleSideBar} = userSlice.actions;
+export const { toggleTheme, loginUser, logOutUser, openSideBar, closeSideBar} = userSlice.actions;
 
 export default userSlice.reducer;

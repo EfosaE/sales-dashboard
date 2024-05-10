@@ -1,7 +1,3 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import paypal from '/assets/paypal.svg';
-import finance from '/assets/finance_money.svg';
 import transaction from '/assets/transaction.svg';
 import BarChart from '../components/charts/BarChart';
 import { employeesData } from '../data';
@@ -89,7 +85,7 @@ const Dashboard = () => {
             placeholder='amount to send'
           />
           <button className='bg-[#1814F3] py-3 px-4 rounded-full -rounded-l-[9999px] w-full block'>
-            <p>
+            <p className='text-white'>
               Send <img src={plane} alt='' className='inline' />
             </p>
           </button>

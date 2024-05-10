@@ -1,10 +1,10 @@
 import settings from '/assets/settings 1.svg';
 import notification from '/assets/notification.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOutUser, toggleSideBar, toggleTheme } from '../features/userSlice';
+import { logOutUser, openSideBar, toggleTheme } from '../features/userSlice';
 import { MdOutlineWbSunny } from 'react-icons/md';
 import { BsMoonStars } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
 
@@ -22,25 +22,29 @@ const Header = () => {
     dispatch(logOutUser());
     navigate('/')
   }
-  function handleSidebar() {
-    dispatch(toggleSideBar())
-  }
+  
 
 
   return (
-    <header className='bg-white dark:bg-slate-800 dark:text-white h-fit px-4 py-6 text-center mb-4'>
+    <header className='bg-white dark:bg-slate-800 dark:text-white h-fit px-2 py-6 text-center mb-4'>
       <div className='container mx-auto flex items-center justify-between capitalize'>
-        <div className='lg:hidden ' onClick={handleSidebar}>
+        <div className='lg:hidden ' onClick={() => {
+          dispatch(openSideBar());
+        }}>
           <RxHamburgerMenu />
         </div>
 
         <h1>{title ? title : 'Overview'}</h1>
-        <div
+
+        {user ?  <div
           className='bg-cover bg-center h-10 w-10 lg:hidden rounded-full '
           style={{
             backgroundImage:
               'url(https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
-          }}></div>
+          }}></div> : <Link to='/login' className='dark:bg-white dark:text-black bg-slate-900 text-white px-4 py-2 rounded-md text-xs '>
+            login
+        </Link>}
+       
 
         <div className='hidden lg:flex items-center space-x-4'>
           <input
