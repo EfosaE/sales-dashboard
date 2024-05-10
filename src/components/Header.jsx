@@ -41,7 +41,7 @@ const Header = () => {
           style={{
             backgroundImage:
               'url(https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
-          }}></div> : <Link to='/login' className='dark:bg-white dark:text-black bg-slate-900 text-white px-4 py-2 rounded-md text-xs '>
+          }}></div> : <Link to='/login' className='dark:bg-white dark:text-black bg-slate-900 text-white px-4 py-2 rounded-md text-xs lg:hidden'>
             login
         </Link>}
        
