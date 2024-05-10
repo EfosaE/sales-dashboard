@@ -12,8 +12,6 @@ import plane from '/assets/plane.png';
 import LineChart from '../components/charts/LineChart';
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-  const { user } = useSelector((store) => store.user);
 
   return (
     <section className='container mx-auto lg:grid lg:grid-cols-3 lg:gap-x-2 lg:gap-y-1 lg:py-2 xl:gap-x-4 xl:gap-y-2 xl:py-4'>

@@ -3,7 +3,9 @@ import logo from '/assets/logo.png';
 import { sideLinks } from '../data';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTitle } from '../features/headerSlice';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+import { MdOutlineWbSunny } from 'react-icons/md';
+import { BsMoonStars } from 'react-icons/bs';
 import { logOutUser, toggleSideBar } from '../features/userSlice';
 
 
@@ -12,6 +14,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { user, isSideBarOpen } = useSelector((store) => store.user);
+  const {user_name} = user?.user.user_metadata || {}
   function removeSlash(pathname) {
     return decodeURIComponent(
       pathname.startsWith('/') ? pathname.substring(1) : pathname
@@ -28,7 +31,8 @@ const Sidebar = () => {
     dispatch(logOutUser());
     navigate('/');
   }
- 
+
+  
   
   
 
@@ -37,11 +41,11 @@ const Sidebar = () => {
   return (
     <section className={sectionStyles}>
       <div className='flex'>
-        <h1 className='mb-5 flex justify-center items-center font-mont text-2xl mr-8'>
+        <h1 className='mb-5 flex justify-center items-center font-mont text-xl'>
           <img src={logo} alt='' className='w-7 h-7 mr-1' />
-          Griffin.io
+          {!user ? 'Griffin':  user_name}.io
         </h1>
-        <div onClick={handleSidebar} className='lg:hidden'>X</div>
+        <div onClick={handleSidebar} className='lg:hidden ml-8'>X</div>
       </div>
 
       <ul className=''>

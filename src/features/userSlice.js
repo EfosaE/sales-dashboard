@@ -18,7 +18,7 @@ async function signOut() {
 }
 
 function getUserFromLocalStorage() {
- return JSON.parse(localStorage.getItem('user')) || null;
+ return JSON.parse(localStorage.getItem('_user')) || null;
 }
 
 
@@ -57,12 +57,12 @@ const userSlice = createSlice({
     loginUser: (state, action) => {
       const user = action.payload
       state.user = user
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('_user', JSON.stringify(user));
     },
 
     logOutUser: (state) => {
       signOut();
-      localStorage.removeItem('user');
+      localStorage.removeItem('_user');
       state.user=null
       toast.success('Logged out successfully');
     },

@@ -4,8 +4,11 @@ import blackChip from '/assets/black_chip_card.png';
 import whiteChip from '/assets/Chip_Card.png';
 
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Cards = () => {
+    const { user } = useSelector((store) => store.user);
+    const { user_name } = user.user.user_metadata;
   return (
     <div className='col-span-2 flex flex-col gap-y-2 '>
       <div className='flex justify-between'>
@@ -21,12 +24,12 @@ const Cards = () => {
                 <p className='text-xs lato-light'>Balance </p>
                 <p className='text-xl lato-regular '>5,234</p>
               </div>
-              <img src={whiteChip} alt='' className='w-8 h-8 lg:w-10 lg:w-10' />
+              <img src={whiteChip} alt='' className='w-8 lg:w-10' />
             </div>
             <div className='flex'>
               <div className='mr-20'>
                 <p className='lato-thin lg:text-sm text-xs '>CARD HOLDER</p>
-                <p className='lato-regular'>Griffin</p>
+                <p className='lato-regular'>{user_name}</p>
               </div>
               <div>
                 <p className='lato-thin lg:text-sm text-xs '>VALID THRU</p>
@@ -51,12 +54,12 @@ const Cards = () => {
                 <p className='text-xs lato-light'>Balance </p>
                 <p className='text-xl lato-regular'>5,234</p>
               </div>
-              <img src={blackChip} alt='' className='w-8 h-8 lg:w-10 lg:w-10' />
+              <img src={blackChip} alt='' className='w-8  lg:w-10' />
             </div>
             <div className='flex'>
               <div className='mr-20'>
                 <p className='lato-thin lg:text-sm text-xs '>CARD HOLDER</p>
-                <p className='lato-regular'>Griffin</p>
+                <p className='lato-regular'>{user_name}</p>
               </div>
               <div>
                 <p className='lato-thin lg:text-sm text-xs '>VALID THRU</p>
